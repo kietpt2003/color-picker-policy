@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn how Color Picker handles local storage, images, clipboard actions, drawing, and screen capture. Read the full privacy policy.">
+  <meta name="theme-color" content="#f7f8fc">
+  <link rel="icon" type="image/png" href="assets/color-picker.png">
+  <script src="policy.js" defer></script>
+  <title>Privacy Policy · Color Picker</title>
+  <style>
+    :root { color-scheme: light; --ink: #202238; --muted: #60647a; --line: #e4e6ef; --accent: #6554c0; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+    body { margin: 0; background: #f7f8fc; color: var(--ink); font: 16px/1.8 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -100px; left: 20px; padding: 8px 16px; background: white; z-index: 10; }
+    .skip-link:focus { top: 16px; }
+    .wrap { max-width: 1160px; padding: 0 40px; margin: auto; }
+    header { border-bottom: 1px solid var(--line); }
+    .header-inner { min-height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 750; letter-spacing: -.6px; text-decoration: none; }
+    .brand-mark { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; }
+    .header-label { font-size: 12px; font-weight: 650; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+    .hero { padding: 70px 0 44px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #48705d; background: #eaf2ed; border: 1px solid #dce9e0; border-radius: 99px; padding: 5px 12px; font-size: 12px; font-weight: 650; }
+    .eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #608b72; }
+    h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.12; letter-spacing: -2.8px; margin: 22px 0 18px; font-weight: 750; }
+    .intro { max-width: 620px; color: var(--muted); font-size: 18px; line-height: 1.75; margin: 0; }
+    .highlights { display: grid; grid-template-columns: repeat(3, 1fr); margin: 36px 0 0; border: 1px solid var(--line); background: #ffffffb3; border-radius: 16px; overflow: hidden; }
+    .highlight { padding: 23px 26px; }
+    .highlight + .highlight { border-left: 1px solid var(--line); }
+    .highlight strong { display: block; font-size: 14px; font-weight: 650; }
+    .highlight p { color: var(--muted); font-size: 13px; margin: 3px 0 0; }
+    .dot { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 9px; }
+    .lavender { background: #afa0e6; } .green { background: #99c6af; } .peach { background: #e9b895; }
+    .layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 46px; align-items: start; padding: 10px 0 70px; }
+    aside { position: sticky; top: 28px; padding-top: 14px; }
+    .nav-title { margin: 0 0 17px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--muted); }
+    nav { display: grid; gap: 5px; }
+    nav a { display: flex; align-items: baseline; gap: 10px; padding: 7px 0; font-size: 12px; color: var(--muted); text-decoration: none; line-height: 1.6; }
+    nav a span { font-size: 10px; color: #9699aa; font-variant-numeric: tabular-nums; }
+    nav a:hover { color: var(--accent); }
+    article { background: white; border: 1px solid var(--line); border-radius: 20px; padding: 9px 34px; box-shadow: 0 8px 30px #26234703; }
+    section { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 14px; padding: 28px 0; scroll-margin-top: 16px; }
+    section + section { border-top: 1px solid #eeeff5; }
+    .section-number { color: #a19ab9; font-size: 11px; font-weight: 650; padding-top: 5px; font-variant-numeric: tabular-nums; }
+    h2 { font-size: 19px; line-height: 1.5; letter-spacing: -.4px; margin: 0 0 11px; font-weight: 650; }
+    section p { font-size: 14px; line-height: 1.95; color: var(--muted); margin: 0; overflow-wrap: anywhere; }
+    code { background: #f3f1f8; padding: 2px 5px; border-radius: 4px; font-size: .9em; color: #65518b; }
+    strong { color: var(--ink); }
+    footer { border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 24px; padding-bottom: 28px; font-size: 12px; color: var(--muted); }
+    .footer-inner p { margin: 0; } .footer-inner a { text-underline-offset: 4px; }
+    @media (max-width: 850px) { .layout { grid-template-columns: 1fr; gap: 25px; } aside { position: static; padding-top: 0; } nav { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; } .hero { padding-top: 46px; } }
+    @media (max-width: 540px) { .wrap { padding-left: 22px; padding-right: 22px; } .header-inner { min-height: 76px; } .header-label { font-size: 10px; letter-spacing: 1px; } .brand { font-size: 17px; } h1 { letter-spacing: -1.8px; } .intro { font-size: 16px; } .highlights { grid-template-columns: 1fr; margin-top: 28px; } .highlight { padding: 14px 20px; } .highlight + .highlight { border-left: 0; border-top: 1px solid var(--line); } article { padding: 0 20px; border-radius: 15px; } section { grid-template-columns: 1fr; gap: 5px; padding: 23px 0; } .section-number { padding-top: 0; } h2 { font-size: 18px; } nav a { font-size: 11px; } .footer-inner { align-items: flex-start; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print { body { background: white; } .skip-link, aside, .highlights, .footer-inner a { display: none; } .hero { padding: 25px 0; } .layout { display: block; padding-bottom: 0; } article { padding: 0; border: 0; box-shadow: none; } section { break-inside: avoid; } .wrap { max-width: none; padding: 0; } }
+
+    .header-actions { display: flex; align-items: center; gap: 20px; }
+    .language-switch { display: flex; padding: 4px; border: 1px solid var(--line); border-radius: 10px; background: white; gap: 3px; }
+    .language-switch[hidden] { display: none; }
+    .language-switch button { border: 0; background: transparent; color: var(--muted); border-radius: 6px; padding: 7px 10px; min-height: 36px; font-family: inherit; font-size: 12px; font-weight: 600; line-height: 1.5; cursor: pointer; }
+    .language-switch button:hover { background: #f3f1f8; }
+    .language-switch button[aria-pressed="true"] { background: var(--accent); color: white; }
+    .language-switch button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    @media (max-width: 650px) { .header-actions { gap: 0; } .header-label { display: none; } }
+    @media (max-width: 360px) { .header-inner { flex-wrap: wrap; justify-content: center; padding-top: 14px; padding-bottom: 14px; gap: 12px; } }
+    @media print { .language-switch { display: none; } }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#policy">Skip to privacy policy</a>
+  <header><div class="wrap header-inner"><a class="brand" href="#top" aria-label="Color Picker, back to top"><img class="brand-mark" src="assets/color-picker.png" alt="" width="40" height="40">Color Picker</a><div class="header-actions"><span class="header-label">Privacy center</span><div class="language-switch" role="group" aria-label="Choose language" hidden><button type="button" lang="en" data-language="en" aria-pressed="true">EN<span class="sr-only"> — English</span></button><button type="button" lang="vi" data-language="vi" aria-pressed="false">VI<span class="sr-only"> — Tiếng Việt</span></button><button type="button" lang="zh-CN" data-language="zh-CN" aria-pressed="false">中文<span class="sr-only"> — 简体中文</span></button></div></div></div></header>
+  <main class="wrap">
+    <div class="hero">
+      <span class="eyebrow">On your device. In your control.</span>
+      <h1>Privacy policy.</h1>
+      <p class="intro">A clear look at how Color Picker handles your colors, images and drawings — and the choices you control.</p>
+      <div class="highlights" aria-label="Privacy at a glance">
+        <div class="highlight"><strong><span class="dot lavender" aria-hidden="true"></span>Local processing</strong><p>Your colors and images stay on your device.</p></div>
+        <div class="highlight"><strong><span class="dot green" aria-hidden="true"></span>No tracking</strong><p>No accounts, ads or usage analytics.</p></div>
+        <div class="highlight"><strong><span class="dot peach" aria-hidden="true"></span>You choose what to save</strong><p>Exports happen when you request them.</p></div>
+      </div>
+    </div>
+    <div class="layout">
+      <aside><p class="nav-title">On this page</p><nav aria-label="Policy sections"><a href="#overview"><span>01</span>Your privacy, by design</a>
+<a href="#storage"><span>02</span>Local storage &amp; your controls</a>
+<a href="#eyedropper"><span>03</span>Picking a screen color</a>
+<a href="#clipboard"><span>04</span>Clipboard &amp; paste</a>
+<a href="#web-drawing"><span>05</span>Drawing on a webpage</a>
+<a href="#desktop-drawing"><span>06</span>Desktop drawing companion</a>
+<a href="#images"><span>07</span>Images &amp; color analysis</a>
+<a href="#exports"><span>08</span>Saving your drawings</a>
+<a href="#screen-capture"><span>09</span>Screen capture permissions</a></nav></aside>
+      <article id="policy" aria-label="Color Picker privacy policy"><section id="overview" aria-labelledby="overview-title"><div class="section-number">01</div><div><h2 id="overview-title">Your privacy, by design</h2><p>Color Picker processes colors on your device. It does not transmit browsing history, page content, images, personal information or usage analytics to remote servers. It has no accounts, ads, remote scripts, external fonts or runtime network requests.</p></div></section>
+<section id="storage" aria-labelledby="storage-title"><div class="section-number">02</div><div><h2 id="storage-title">Local storage &amp; your controls</h2><p>The extension uses the <strong>storage</strong> permission to keep your selected language, current color, saved palette and recent colors in <code>chrome.storage.local</code>. It does not use browser account sync. Clear recent colors with the Clear button and remove saved colors with each swatch&#x27;s remove button. Uninstalling the extension removes its local extension storage.</p></div></section>
+<section id="eyedropper" aria-labelledby="eyedropper-title"><div class="section-number">03</div><div><h2 id="eyedropper-title">Picking a screen color</h2><p>When you click Pick screen color, the browser provides its native EyeDropper. The extension receives only the sRGB hexadecimal value of the pixel you explicitly select. The color picker does not record the screen or run background sampling. The selected color may then be stored in local history. Press Escape to cancel.</p></div></section>
+<section id="clipboard" aria-labelledby="clipboard-title"><div class="section-number">04</div><div><h2 id="clipboard-title">Clipboard &amp; paste</h2><p>Copy buttons write the selected color code to your clipboard in response to a click. When you explicitly paste an image with Ctrl+V / Cmd+V, the extension reads the image included in that paste event and processes it locally. Ordinary text paste is handled by the focused input. The extension does not poll the clipboard or request clipboard-read permission.</p></div></section>
+<section id="web-drawing" aria-labelledby="web-drawing-title"><div class="section-number">05</div><div><h2 id="web-drawing-title">Drawing on a webpage</h2><p>When you click Draw on this page, the extension uses activeTab and scripting to add a local drawing overlay to that current webpage. It does not request permanent access to all websites or inject drawing tools automatically. Annotation strokes, text and undo history are held in that page session; you can explicitly export the transparent drawing layer as a PNG. Closing the drawing tools or leaving the page releases that session.</p></div></section>
+<section id="desktop-drawing" aria-labelledby="desktop-drawing-title"><div class="section-number">06</div><div><h2 id="desktop-drawing-title">Desktop drawing companion</h2><p>Desktop drawing uses the separate Color Picker Draw application. It creates transparent windows above other applications. Ordinary drawing and drawing-only export do not capture the applications underneath. The app link shares only your chosen color and language. Drawings and typed annotation text remain in memory until you close the app, except for PNG files that you explicitly save. The desktop companion does not start a network service, use analytics or request a native messaging host installation.</p></div></section>
+<section id="images" aria-labelledby="images-title"><div class="section-number">07</div><div><h2 id="images-title">Images &amp; color analysis</h2><p>When you choose, drop or paste an image file, Color Picker decodes it locally to inspect pixels, list distinct colors and count how many pixels use each color. The original image and full image color inventory stay in memory for that popup or window session; they are not uploaded or written to extension storage. Removing the image or closing the view releases this session data. Colors explicitly selected from the image may be saved as the current color and in local history or your palette. Export all CSV creates a local file containing color codes, color channels and pixel counts, without the source image or file name.</p></div></section>
+<section id="exports" aria-labelledby="exports-title"><div class="section-number">08</div><div><h2 id="exports-title">Saving your drawings</h2><p>The drawing Save menu has three explicit modes. Drawing-only saves a transparent annotation PNG. Web view with drawings captures the visible webpage (or a region you select in the desktop companion), then composites annotations. Entire screen with drawings captures a selected screen in Chrome, or the active drawing display in the companion. These images are saved only to your device. Toolbars, eraser preview and selection UI are excluded.</p></div></section>
+<section id="screen-capture" aria-labelledby="screen-capture-title"><div class="section-number">09</div><div><h2 id="screen-capture-title">Screen capture permissions</h2><p>Chrome&#x27;s desktopCapture permission opens the screen selector for your requested full-screen save. The temporary capture helper reads a screen video frame and stops every media track after saving or canceling. It does not keep a recording or run capture in the background after the save operation. Temporary session storage contains only the request ID and originating tab/window IDs for restoring the UI; it contains no captured image. The desktop app uses the OS desktop-capture API when you select a web/screen save mode; macOS may ask for Screen Recording permission. Canceling or denying capture restores the tools and preserves your drawing.</p></div></section></article>
+    </div>
+  </main>
+  <footer><div class="wrap footer-inner"><p>Color Picker · Privacy policy</p><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>
